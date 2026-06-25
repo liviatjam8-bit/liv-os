@@ -96,15 +96,12 @@ Result:
 
 [WARNING] Core dependency threat detected.
 
-[STDOUT] Checking linked services...
-
 [WARNING] soundtrack_generator.service affected
 
 [WARNING] food_recommendation.service affected
 
 [ERROR] Critical failure in biological_clock.sys
 
-[ERROR] Operation aborted.
 ```
 
 ---
