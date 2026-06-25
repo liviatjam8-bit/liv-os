@@ -98,9 +98,9 @@ Result:
 
 [WARNING] soundtrack_generator.service affected
 
-[WARNING] food_recommendation.service affected
-
 [ERROR] Critical failure in biological_clock.sys
+
+[ERROR] Operation aborted.
 
 ```
 
