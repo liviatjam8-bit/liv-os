@@ -3,17 +3,15 @@ const line1 = document.getElementById("line1");
 const line2 = document.getElementById("line2");
 const button = document.getElementById("continueBtn");
 
-function sleep(ms){
-
-    return new Promise(resolve=>setTimeout(resolve,ms));
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function type(element,text,speed=50){
+async function type(element, text, speed = 60) {
 
     element.classList.add("cursor");
 
-    for(let i=0;i<text.length;i++){
+    for (let i = 0; i < text.length; i++) {
 
         element.innerHTML += text.charAt(i);
 
@@ -25,22 +23,36 @@ async function type(element,text,speed=50){
 
 }
 
-async function start(){
+async function start() {
 
-    await type(title,"Dear Ruben Sugianto,",70);
-
-    await sleep(700);
-
-    await type(line1,"Before you go...",60);
+    await type(title, "Dear Ruben Sugianto,", 70);
 
     await sleep(700);
 
-    await type(line2,"Can you guess what's waiting inside? 👀",45);
+    await type(line1, "Before you go...", 60);
+
+    await sleep(700);
+
+    await type(line2, "Can you guess what's waiting inside? 👀", 45);
 
     await sleep(1000);
 
-    button.style.display="inline-block";
+    button.style.display = "inline-block";
 
 }
 
 start();
+
+button.addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    document.getElementById("transition").classList.add("show");
+
+    setTimeout(() => {
+
+        window.location.href = "letter.html";
+
+    }, 1200);
+
+});
