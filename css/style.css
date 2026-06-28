@@ -1,93 +1,132 @@
-.boot{
+/*
+=========================================
+liv-os
 
-background:#0d1117;
+Apple-inspired UI
 
-color:#39ff88;
+Created with love by Liv.
+=========================================
+*/
 
-font-family:SFMono-Regular,Consolas,monospace;
 
-}
+/* ======================================
+   GENERAL
+====================================== */
 
-.terminal{
+body{
 
-width:90%;
+    margin:0;
+    padding:0;
 
-max-width:720px;
+    background:#f7f7f5;
+    color:#1d1d1f;
 
-margin:auto;
-
-padding-top:80px;
-
-}
-
-.progress-container{
-
-height:10px;
-
-background:#222;
-
-border-radius:20px;
-
-overflow:hidden;
-
-margin:30px 0;
+    font-family:-apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    sans-serif;
 
 }
 
-.progress{
 
-width:0;
+/* ======================================
+   LAYOUT
+====================================== */
 
-height:100%;
+.container{
 
-background:#39ff88;
+    width:90%;
+    max-width:850px;
 
-}
+    margin:auto;
 
-#logs{
+    min-height:100vh;
 
-line-height:2;
+    display:flex;
+    flex-direction:column;
 
-margin-top:30px;
+    justify-content:center;
+    align-items:center;
 
-min-height:220px;
-
-}
-
-#systemReady{
-
-margin-top:15px;
-
-font-weight:bold;
+    text-align:center;
 
 }
 
-#enterButton{
 
-display:none;
+/* ======================================
+   TYPOGRAPHY
+====================================== */
 
-margin-top:30px;
+h1{
 
-padding:14px 28px;
+    font-size:56px;
 
-background:transparent;
+    font-weight:600;
 
-border:1px solid #39ff88;
+    letter-spacing:-2px;
 
-color:#39ff88;
-
-cursor:pointer;
-
-font-family:inherit;
-
-transition:.3s;
+    margin-bottom:50px;
 
 }
 
-#enterButton:hover{
+p{
 
-background:#39ff88;
+    font-size:28px;
 
-color:#0d1117;
+    color:#555;
+
+    line-height:1.8;
+
+    margin:18px 0;
+
+}
+
+
+/* ======================================
+   BUTTON
+====================================== */
+
+#continueBtn{
+
+    display:none;
+
+    margin-top:80px;
+
+    color:#0071e3;
+
+    text-decoration:none;
+
+    font-size:20px;
+
+    font-weight:500;
+
+}
+
+#continueBtn:hover{
+
+    text-decoration:underline;
+
+}
+
+
+/* ======================================
+   TYPING CURSOR
+====================================== */
+
+.cursor{
+
+    border-right:2px solid black;
+
+    animation:blink .8s infinite;
+
+}
+
+@keyframes blink{
+
+    50%{
+
+        border-color:transparent;
+
+    }
 
 }
