@@ -1,51 +1,43 @@
+const title = document.getElementById("title");
 const line1 = document.getElementById("line1");
 const line2 = document.getElementById("line2");
-const line3 = document.getElementById("line3");
 const button = document.getElementById("continueBtn");
 
-function typeText(element, text, speed = 50){
+function sleep(ms){
 
-    return new Promise(resolve=>{
+    return new Promise(resolve=>setTimeout(resolve,ms));
 
-        let i=0;
+}
 
-        element.classList.add("cursor");
+async function type(element,text,speed=50){
 
-        const interval=setInterval(()=>{
+    element.classList.add("cursor");
 
-            element.innerHTML += text.charAt(i);
+    for(let i=0;i<text.length;i++){
 
-            i++;
+        element.innerHTML += text.charAt(i);
 
-            if(i>=text.length){
+        await sleep(speed);
 
-                clearInterval(interval);
+    }
 
-                element.classList.remove("cursor");
-
-                resolve();
-
-            }
-
-        },speed);
-
-    });
+    element.classList.remove("cursor");
 
 }
 
 async function start(){
 
-    await typeText(line1,"Dear Ruben Sugianto,",60);
+    await type(title,"Dear Ruben Sugianto,",70);
 
-    await new Promise(r=>setTimeout(r,700));
+    await sleep(700);
 
-    await typeText(line2,"Before you go...",60);
+    await type(line1,"Before you go...",60);
 
-    await new Promise(r=>setTimeout(r,700));
+    await sleep(700);
 
-    await typeText(line3,"Can you guess what's waiting inside? 👀",45);
+    await type(line2,"Can you guess what's waiting inside? 👀",45);
 
-    await new Promise(r=>setTimeout(r,900));
+    await sleep(1000);
 
     button.style.display="inline-block";
 
