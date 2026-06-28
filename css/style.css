@@ -2,23 +2,22 @@
 =========================================
 liv-os
 
-Apple-inspired UI
+Apple Inspired UI
 
 Created with love by Liv.
 =========================================
 */
 
-
-/* ======================================
-   GENERAL
-====================================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
 body{
 
-    margin:0;
-    padding:0;
-
     background:#f7f7f5;
+
     color:#1d1d1f;
 
     font-family:-apple-system,
@@ -28,44 +27,37 @@ body{
 
 }
 
-
-/* ======================================
-   LAYOUT
-====================================== */
-
 .container{
 
     width:90%;
-    max-width:850px;
 
-    margin:auto;
+    max-width:900px;
 
     min-height:100vh;
 
+    margin:auto;
+
     display:flex;
+
     flex-direction:column;
 
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
 
 }
 
-
-/* ======================================
-   TYPOGRAPHY
-====================================== */
-
 h1{
 
-    font-size:56px;
+    font-size:58px;
 
     font-weight:600;
 
     letter-spacing:-2px;
 
-    margin-bottom:50px;
+    margin-bottom:40px;
 
 }
 
@@ -77,45 +69,49 @@ p{
 
     line-height:1.8;
 
-    margin:18px 0;
+    margin:15px 0;
 
 }
-
-
-/* ======================================
-   BUTTON
-====================================== */
 
 #continueBtn{
 
     display:none;
 
-    margin-top:80px;
+    margin-top:70px;
 
     color:#0071e3;
 
     text-decoration:none;
 
-    font-size:20px;
+    font-size:22px;
 
     font-weight:500;
+
+    transition:.3s;
 
 }
 
 #continueBtn:hover{
 
-    text-decoration:underline;
+    transform:translateX(6px);
 
 }
 
+footer{
 
-/* ======================================
-   TYPING CURSOR
-====================================== */
+    position:fixed;
+
+    bottom:30px;
+
+    color:#999;
+
+    font-size:14px;
+
+}
 
 .cursor{
 
-    border-right:2px solid black;
+    border-right:2px solid #1d1d1f;
 
     animation:blink .8s infinite;
 
@@ -128,5 +124,45 @@ p{
         border-color:transparent;
 
     }
+
+}
+
+#transition{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#ffffff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.8s;
+
+    z-index:999;
+
+}
+
+#transition.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+#loadingText{
+
+    color:#777;
+
+    font-size:24px;
 
 }
