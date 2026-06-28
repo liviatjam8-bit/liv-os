@@ -1,86 +1,93 @@
-body{
+.boot{
 
-    margin:0;
-    background:#fafafa;
+background:#0d1117;
 
-    font-family:Inter, sans-serif;
+color:#39ff88;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    height:100vh;
-
-    text-align:center;
+font-family:SFMono-Regular,Consolas,monospace;
 
 }
 
-.container{
+.terminal{
 
-    width:90%;
-    max-width:700px;
+width:90%;
 
-}
+max-width:720px;
 
-h1{
+margin:auto;
 
-    font-size:48px;
-    font-weight:600;
-
-    margin-bottom:40px;
+padding-top:80px;
 
 }
 
-p{
+.progress-container{
 
-    font-size:24px;
+height:10px;
 
-    color:#666;
+background:#222;
 
-    line-height:1.8;
+border-radius:20px;
 
-    margin:20px 0;
+overflow:hidden;
 
-}
-
-#continueBtn{
-
-    display:none;
-
-    margin-top:60px;
-
-    text-decoration:none;
-
-    color:black;
-
-    font-weight:600;
-
-    font-size:18px;
-
-    transition:.3s;
+margin:30px 0;
 
 }
 
-#continueBtn:hover{
+.progress{
 
-    transform:translateY(-3px);
+width:0;
 
-}
+height:100%;
 
-.cursor{
-
-    border-right:2px solid black;
-
-    animation:blink .8s infinite;
+background:#39ff88;
 
 }
 
-@keyframes blink{
+#logs{
 
-50%{
+line-height:2;
 
-border-color:transparent;
+margin-top:30px;
+
+min-height:220px;
 
 }
+
+#systemReady{
+
+margin-top:15px;
+
+font-weight:bold;
+
+}
+
+#enterButton{
+
+display:none;
+
+margin-top:30px;
+
+padding:14px 28px;
+
+background:transparent;
+
+border:1px solid #39ff88;
+
+color:#39ff88;
+
+cursor:pointer;
+
+font-family:inherit;
+
+transition:.3s;
+
+}
+
+#enterButton:hover{
+
+background:#39ff88;
+
+color:#0d1117;
 
 }
