@@ -2,6 +2,7 @@ const title = document.getElementById("title");
 const line1 = document.getElementById("line1");
 const line2 = document.getElementById("line2");
 const button = document.getElementById("continueBtn");
+const transition = document.getElementById("transition");
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -35,7 +36,7 @@ async function start() {
 
     await type(line2, "Can you guess what's waiting inside? 👀", 45);
 
-    await sleep(1000);
+    await sleep(900);
 
     button.style.display = "inline-block";
 
@@ -43,16 +44,16 @@ async function start() {
 
 start();
 
-button.addEventListener("click", function (event) {
+button.onclick = function (event) {
 
     event.preventDefault();
 
-    document.getElementById("transition").classList.add("show");
+    transition.classList.add("show");
 
-    setTimeout(() => {
+    setTimeout(function () {
 
         window.location.href = "letter.html";
 
     }, 1200);
 
-});
+};
