@@ -1,0 +1,365 @@
+/* ========================================= */
+/*           liv-os | Scene 3                */
+/*           envelope.css                    */
+/* ========================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+    overflow:hidden;
+
+    font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "Segoe UI",
+    sans-serif;
+
+    background:#F6F5F3;
+}
+
+/* ========================================= */
+/* Background */
+/* ========================================= */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+    radial-gradient(
+        circle at top,
+        #ffffff,
+        #f6f5f3
+    );
+
+}
+
+/* ========================================= */
+/* Scene */
+/* ========================================= */
+
+.scene{
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+}
+
+/* ========================================= */
+/* Envelope */
+/* ========================================= */
+
+.envelope{
+
+    position:relative;
+
+    width:520px;
+    height:340px;
+
+    cursor:pointer;
+
+    transition:
+    transform .5s ease,
+    filter .5s ease;
+
+}
+
+.envelope:hover{
+
+    transform:
+    translateY(-8px)
+    scale(1.01);
+
+    filter:
+    drop-shadow(
+        0 28px 55px rgba(0,0,0,.12)
+    );
+
+}
+
+/* ========================================= */
+/* Paper */
+/* ========================================= */
+
+.paper{
+
+    position:absolute;
+
+    left:50%;
+    bottom:35px;
+
+    transform:
+    translateX(-50%);
+
+    width:450px;
+    height:300px;
+
+    background:#FFECEF;
+
+    border-radius:18px;
+
+    z-index:1;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:flex-start;
+
+    padding-top:55px;
+
+    box-shadow:
+
+    0 15px 30px
+    rgba(0,0,0,.08);
+
+}
+
+/* ========================================= */
+
+.paper-content{
+
+    width:80%;
+
+}
+
+.paper-content h1{
+
+    font-size:34px;
+
+    color:#444;
+
+    font-weight:500;
+
+}
+
+/* ========================================= */
+/* Envelope Back */
+/* ========================================= */
+
+.envelope-back{
+
+    position:absolute;
+
+    inset:0;
+
+    background:white;
+
+    border-radius:14px;
+
+    z-index:2;
+
+    box-shadow:
+
+    0 20px 45px
+    rgba(0,0,0,.08);
+
+}
+
+/* ========================================= */
+/* Front */
+/* ========================================= */
+
+.envelope-front{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:58%;
+
+    background:white;
+
+    z-index:4;
+
+    border-radius:
+
+    0
+    0
+    14px
+    14px;
+
+}
+
+/* ========================================= */
+/* Flap */
+/* ========================================= */
+
+.flap{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+    height:60%;
+
+    background:white;
+
+    clip-path:
+
+    polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
+
+    transform-origin:top;
+
+    z-index:5;
+
+    transition:
+
+    transform
+    .8s
+    cubic-bezier(.22,.61,.36,1);
+
+}
+
+/* ========================================= */
+/* Open State */
+/* ========================================= */
+
+.envelope.open .flap{
+
+    transform:
+
+    rotateX(180deg);
+
+}
+
+.envelope.open .paper{
+
+    animation:
+
+    paperUp
+
+    2s
+
+    cubic-bezier(.22,.61,.36,1)
+
+    forwards;
+
+}
+
+/* ========================================= */
+/* Paper Animation */
+/* ========================================= */
+
+@keyframes paperUp{
+
+    0%{
+
+        transform:
+
+        translateX(-50%)
+
+        translateY(0);
+
+    }
+
+    20%{
+
+        transform:
+
+        translateX(-50%)
+
+        translateY(-40px);
+
+    }
+
+    50%{
+
+        transform:
+
+        translateX(-50%)
+
+        translateY(-140px);
+
+    }
+
+    100%{
+
+        transform:
+
+        translateX(-50%)
+
+        translateY(-260px);
+
+    }
+
+}
+
+/* ========================================= */
+/* Responsive */
+/* ========================================= */
+
+@media(max-width:768px){
+
+    .envelope{
+
+        width:360px;
+        height:240px;
+
+    }
+
+    .paper{
+
+        width:300px;
+        height:220px;
+
+    }
+
+    .paper-content h1{
+
+        font-size:28px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .envelope{
+
+        width:300px;
+        height:200px;
+
+    }
+
+    .paper{
+
+        width:250px;
+        height:180px;
+
+    }
+
+    .paper-content h1{
+
+        font-size:24px;
+
+    }
+
+}
