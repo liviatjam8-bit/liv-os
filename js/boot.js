@@ -1,78 +1,128 @@
-const logs = [
+// ======================================================
+// liv-os
+// Boot Screen v2
+// ======================================================
 
-"✓ README.md",
+const progress = document.getElementById("progress");
+const logs = document.getElementById("logs");
+const systemReady = document.getElementById("systemReady");
+const enterButton = document.getElementById("enterButton");
 
-"✓ CHANGELOG.md",
-
-"✓ Ruben.exe",
-
-"✓ warm-last-hug-transfer-protocol",
-
-"✓ One last package",
-
-"",
-
-"No critical errors found."
-
+const logList = [
+    "✓ README.md",
+    "✓ CHANGELOG.md",
+    "✓ Ruben.exe",
+    "✓ warm-last-hug-transfer-protocol",
+    "✓ One last package"
 ];
 
-const progress=document.getElementById("progress");
-const logBox=document.getElementById("logs");
-const ready=document.getElementById("systemReady");
-const button=document.getElementById("enterButton");
+let percent = 0;
+let currentLog = 0;
+let bootFinished = false;
 
-let width=0;
+// ======================================================
+// Progress
+// ======================================================
 
-const loading=setInterval(()=>{
+const boot = setInterval(() => {
 
-width++;
+    percent++;
 
-progress.style.width=width+"%";
+    progress.style.width = percent + "%";
 
-if(width>=100){
+    if (percent % 20 === 0 && currentLog < logList.length) {
 
-clearInterval(loading);
+        const p = document.createElement("p");
 
-showLogs();
+        p.textContent = logList[currentLog];
+
+        logs.appendChild(p);
+
+        currentLog++;
+
+    }
+
+    if (percent >= 100) {
+
+        clearInterval(boot);
+
+        setTimeout(() => {
+
+            const complete = document.createElement("p");
+
+            complete.textContent = "";
+
+            logs.appendChild(complete);
+
+            systemReady.innerHTML = `
+                <p>✓ No critical errors found.</p>
+                <p>System Ready.</p>
+            `;
+
+        }, 400);
+
+        setTimeout(() => {
+
+            enterButton.style.display = "block";
+
+            bootFinished = true;
+
+        }, 1000);
+
+    }
+
+}, 35);
+
+// ======================================================
+// Continue
+// ======================================================
+
+function continueBoot() {
+
+    if (!bootFinished) return;
+
+    document.body.style.transition = "opacity .8s ease";
+
+    document.body.style.opacity = "0";
+
+    setTimeout(() => {
+
+        window.location.href = "welcome.html";
+
+    }, 800);
 
 }
 
-},18);
+// ======================================================
+// Mouse
+// ======================================================
 
-function showLogs(){
+enterButton.addEventListener("click", continueBoot);
 
-let i=0;
+// ======================================================
+// Keyboard
+// ======================================================
 
-const interval=setInterval(()=>{
+document.addEventListener("keydown", function(event){
 
-logBox.innerHTML+=logs[i]+"<br>";
+    if(event.key === "Enter"){
 
-i++;
+        continueBoot();
 
-if(i>=logs.length){
+    }
 
-clearInterval(interval);
+});
 
-setTimeout(()=>{
+// ======================================================
+// Click Anywhere
+// ======================================================
 
-ready.innerHTML="System Ready.";
+document.addEventListener("click", function(){
 
-setTimeout(()=>{
+    if(bootFinished){
 
-button.style.display="inline-block";
+        continueBoot();
 
-},500);
+    }
 
-},500);
-
-}
-
-},450);
-
-}
-
-button.onclick=()=>{
-
-window.location.href="welcome.html";
-
-}
+});

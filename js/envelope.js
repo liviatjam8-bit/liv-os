@@ -1,77 +1,35 @@
-/* ===========================================
-        liv-os
-        Scene 3
-        envelope.js
-=========================================== */
+// ======================================================
+// liv-os
+// Scene 3
+// envelope.js
+// ======================================================
 
 const envelope = document.getElementById("envelope");
-const paper = document.getElementById("paper");
-const music = document.getElementById("bgMusic");
+const music = document.getElementById("music");
 
 let opened = false;
 
-/* ===========================================
-   Click Envelope
-=========================================== */
+// ======================================================
+// Fade In Music
+// ======================================================
 
-envelope.addEventListener("click", function () {
+function fadeInMusic() {
 
-    if (opened) return;
+    if (!music) return;
 
-    opened = true;
+    music.volume = 0;
 
-    envelope.classList.add("open");
-
-    /* =======================================
-       Start Music
-    ======================================= */
-
-    if (music) {
-
-        music.volume = 0;
-
-        music.play().catch(() => {});
-
-        fadeMusic();
-
-    }
-
-    /* =======================================
-       Go To Letter
-    ======================================= */
-
-    setTimeout(function () {
-
-        document.body.style.transition = "opacity 1s ease";
-
-        document.body.style.opacity = "0";
-
-    }, 3200);
-
-    setTimeout(function () {
-
-        window.location.href = "letter.html";
-
-    }, 4300);
-
-});
-
-
-/* ===========================================
-   Fade Music
-=========================================== */
-
-function fadeMusic() {
+    music.play().catch(() => {});
 
     let volume = 0;
 
-    const fade = setInterval(function () {
+    const fade = setInterval(() => {
 
         volume += 0.05;
 
-        if (volume >= 1) {
+        if (volume >= 0.35) {
 
-            volume = 1;
+            volume = 0.35;
 
             clearInterval(fade);
 
@@ -83,74 +41,73 @@ function fadeMusic() {
 
 }
 
+// ======================================================
+// Open Envelope
+// ======================================================
 
-/* ===========================================
-   Optional Hover Effect
-=========================================== */
-
-envelope.addEventListener("mouseenter", function () {
-
-    envelope.style.transition = "all .4s ease";
-
-});
-
-envelope.addEventListener("mouseleave", function () {
-
-    envelope.style.transition = "all .4s ease";
-
-});
-
-
-/* ===========================================
-   Disable Double Click
-=========================================== */
-
-envelope.addEventListener("dblclick", function (e) {
-
-    e.preventDefault();
-
-});
-
-
-/* ===========================================
-   Prevent Drag
-=========================================== */
-
-document.addEventListener("dragstart", function (e) {
-
-    e.preventDefault();
-
-});
-
-
-/* ===========================================
-   Press Space / Enter
-=========================================== */
-
-document.addEventListener("keydown", function (event) {
+function openEnvelope() {
 
     if (opened) return;
 
-    if (event.code === "Space" || event.code === "Enter") {
+    opened = true;
 
-        envelope.click();
+    envelope.classList.add("open");
+
+    fadeInMusic();
+
+    // Fade out setelah animasi selesai
+
+    setTimeout(() => {
+
+        document.body.style.transition = "opacity .8s ease";
+
+        document.body.style.opacity = "0";
+
+    }, 3400);
+
+    // Masuk ke halaman surat
+
+    setTimeout(() => {
+
+        window.location.href = "letter.html";
+
+    }, 4300);
+
+}
+
+// ======================================================
+// Click
+// ======================================================
+
+envelope.addEventListener("click", openEnvelope);
+
+// ======================================================
+// Keyboard
+// ======================================================
+
+document.addEventListener("keydown", (event) => {
+
+    if (event.key === "Enter" || event.code === "Space") {
+
+        event.preventDefault();
+
+        openEnvelope();
 
     }
 
 });
 
+// ======================================================
+// Page Fade In
+// ======================================================
 
-/* ===========================================
-   Initial Fade In
-=========================================== */
-
-window.addEventListener("load", function () {
+window.addEventListener("load", () => {
 
     document.body.style.opacity = "0";
 
     document.body.style.transition = "opacity .8s ease";
 
-    requestAnimationFrame(function () {
+    requestAnimationFrame(() => {
 
         document.body.style.opacity = "1";
 

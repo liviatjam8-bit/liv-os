@@ -1,7 +1,8 @@
-/* ========================================= */
-/*           liv-os | Scene 3                */
-/*           envelope.css                    */
-/* ========================================= */
+/* ==========================================================
+   liv-os
+   Envelope v3
+   Part 1
+========================================================== */
 
 *{
     margin:0;
@@ -9,201 +10,174 @@
     box-sizing:border-box;
 }
 
-html,
 body{
 
-    width:100%;
-    height:100%;
+    width:100vw;
+    height:100vh;
+
     overflow:hidden;
 
-    font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    "Segoe UI",
-    sans-serif;
-
-    background:#F6F5F3;
-}
-
-/* ========================================= */
-/* Background */
-/* ========================================= */
-
-.background{
-
-    position:fixed;
-
-    inset:0;
-
-    background:
-
-    radial-gradient(
-        circle at top,
-        #ffffff,
-        #f6f5f3
-    );
-
-}
-
-/* ========================================= */
-/* Scene */
-/* ========================================= */
-
-.scene{
-
-    width:100%;
-    height:100vh;
+    background:#F8F6F3;
 
     display:flex;
 
     justify-content:center;
-    align-items:center;
 
-    position:relative;
+    align-items:center;
 
 }
 
-/* ========================================= */
-/* Envelope */
-/* ========================================= */
+/* ==========================================================
+   SCENE
+========================================================== */
+
+.scene{
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ==========================================================
+   WRAPPER
+========================================================== */
+
+.envelope-wrapper{
+
+    perspective:1800px;
+
+}
+
+/* ==========================================================
+   ENVELOPE
+========================================================== */
 
 .envelope{
 
     position:relative;
 
     width:520px;
+
     height:340px;
 
     cursor:pointer;
 
     transition:
-    transform .5s ease,
-    filter .5s ease;
+        transform .45s ease,
+        filter .45s ease;
 
 }
 
 .envelope:hover{
 
     transform:
-    translateY(-8px)
-    scale(1.01);
+        translateY(-6px);
 
     filter:
-    drop-shadow(
-        0 28px 55px rgba(0,0,0,.12)
-    );
+        drop-shadow(0 24px 40px rgba(0,0,0,.10));
 
 }
 
-/* ========================================= */
-/* Paper */
-/* ========================================= */
+/* ==========================================================
+   BACK
+========================================================== */
 
-.paper{
-
-    position:absolute;
-
-    left:50%;
-    bottom:35px;
-
-    transform:
-    translateX(-50%);
-
-    width:450px;
-    height:300px;
-
-    background:#FFECEF;
-
-    border-radius:18px;
-
-    z-index:1;
-
-    display:flex;
-
-    justify-content:center;
-    align-items:flex-start;
-
-    padding-top:55px;
-
-    box-shadow:
-
-    0 15px 30px
-    rgba(0,0,0,.08);
-
-}
-
-/* ========================================= */
-
-.paper-content{
-
-    width:80%;
-
-}
-
-.paper-content h1{
-
-    font-size:34px;
-
-    color:#444;
-
-    font-weight:500;
-
-}
-
-/* ========================================= */
-/* Envelope Back */
-/* ========================================= */
-
-.envelope-back{
+.back{
 
     position:absolute;
 
     inset:0;
 
-    background:white;
+    background:#FFF8F6;
 
-    border-radius:14px;
-
-    z-index:2;
+    border-radius:8px;
 
     box-shadow:
 
-    0 20px 45px
-    rgba(0,0,0,.08);
+        0 14px 40px rgba(0,0,0,.08);
 
 }
 
-/* ========================================= */
-/* Front */
-/* ========================================= */
+/* ==========================================================
+   LEFT FOLD
+========================================================== */
 
-.envelope-front{
+.left-fold{
 
     position:absolute;
 
     left:0;
-    right:0;
+
     bottom:0;
+
+    width:50%;
 
     height:58%;
 
-    background:white;
+    background:#F3E8E6;
 
-    z-index:4;
+    clip-path:polygon(0 0,100% 100%,0 100%);
 
-    border-radius:
-
-    0
-    0
-    14px
-    14px;
+    z-index:8;
 
 }
 
-/* ========================================= */
-/* Flap */
-/* ========================================= */
+/* ==========================================================
+   RIGHT FOLD
+========================================================== */
+
+.right-fold{
+
+    position:absolute;
+
+    right:0;
+
+    bottom:0;
+
+    width:50%;
+
+    height:58%;
+
+    background:#F5ECEA;
+
+    clip-path:polygon(100% 0,0 100%,100% 100%);
+
+    z-index:9;
+
+}
+
+/* ==========================================================
+   BOTTOM FOLD
+========================================================== */
+
+.bottom-fold{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    height:58%;
+
+    background:#F8EFED;
+
+    clip-path:polygon(0 100%,50% 18%,100% 100%);
+
+    z-index:10;
+}
+
+/* ==========================================================
+   TOP FLAP
+========================================================== */
 
 .flap{
 
@@ -214,152 +188,193 @@ body{
     left:0;
 
     width:100%;
-    height:60%;
 
-    background:white;
+    height:55%;
 
-    clip-path:
+    background:#FAF2F0;
 
-    polygon(
-        0 0,
-        100% 0,
-        50% 100%
-    );
+    clip-path:polygon(0 0,50% 100%,100% 0);
 
     transform-origin:top;
 
-    z-index:5;
+    transition:transform .9s cubic-bezier(.22,.61,.36,1);
 
-    transition:
-
-    transform
-    .8s
-    cubic-bezier(.22,.61,.36,1);
+    z-index:20;
 
 }
 
-/* ========================================= */
-/* Open State */
-/* ========================================= */
+/* ==========================================================
+   ADDRESS
+========================================================== */
+
+.address{
+
+    position:absolute;
+
+    inset:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    transform:translateY(-42px);
+
+    z-index:11;
+
+    pointer-events:none;
+
+}
+
+.to{
+
+    font-family:"JetBrains Mono", monospace;
+
+    font-size:14px;
+
+    color:#777;
+
+    letter-spacing:1px;
+
+    margin-bottom:10px;
+
+}
+
+.name{
+
+    font-family:"Caveat", cursive;
+
+    font-size:52px;
+
+    color:#202020;
+
+}
+
+.love{
+
+    margin-top:8px;
+
+    font-family:"Caveat", cursive;
+
+    font-size:28px;
+
+}
+
+.smile{
+
+    margin-top:2px;
+
+    font-family:"Caveat", cursive;
+
+    font-size:28px;
+
+}
+
+/* ==========================================================
+   HINT
+========================================================== */
+
+.hint{
+
+    position:absolute;
+
+    width:100%;
+
+    bottom:-56px;
+
+    text-align:center;
+
+    font-family:"JetBrains Mono", monospace;
+
+    font-size:13px;
+
+    color:#999;
+
+    letter-spacing:1px;
+
+    transition:opacity .3s ease;
+
+}
+
+.envelope:hover .hint{
+
+    opacity:.55;
+
+}
+/* ==========================================================
+   FIX ADDRESS
+========================================================== */
+
+.address{
+
+    z-index:12;
+
+    transform:
+        translateY(-12px);
+
+}
+
+.name{
+
+    margin-bottom:2px;
+
+}
+
+.love{
+
+    margin-top:12px;
+
+}
+
+.smile{
+
+    margin-top:-4px;
+
+}
+
+/* ==========================================================
+   OPEN STATE
+========================================================== */
 
 .envelope.open .flap{
 
     transform:
-
-    rotateX(180deg);
-
-}
-
-.envelope.open .paper{
-
-    animation:
-
-    paperUp
-
-    2s
-
-    cubic-bezier(.22,.61,.36,1)
-
-    forwards;
+        rotateX(180deg);
 
 }
 
-/* ========================================= */
-/* Paper Animation */
-/* ========================================= */
+.envelope.open{
 
-@keyframes paperUp{
-
-    0%{
-
-        transform:
-
-        translateX(-50%)
-
-        translateY(0);
-
-    }
-
-    20%{
-
-        transform:
-
-        translateX(-50%)
-
-        translateY(-40px);
-
-    }
-
-    50%{
-
-        transform:
-
-        translateX(-50%)
-
-        translateY(-140px);
-
-    }
-
-    100%{
-
-        transform:
-
-        translateX(-50%)
-
-        translateY(-260px);
-
-    }
+    transform:
+        translateY(-50px);
 
 }
 
-/* ========================================= */
-/* Responsive */
-/* ========================================= */
+.envelope.open .hint{
 
-@media(max-width:768px){
-
-    .envelope{
-
-        width:360px;
-        height:240px;
-
-    }
-
-    .paper{
-
-        width:300px;
-        height:220px;
-
-    }
-
-    .paper-content h1{
-
-        font-size:28px;
-
-    }
+    opacity:0;
 
 }
+/* ==========================================================
+   ADDRESS POSITION FIX
+========================================================== */
 
-@media(max-width:480px){
+.address{
+    z-index:12;
+    transform:translateY(-12px);
+}
 
-    .envelope{
+.name{
+    margin-bottom:2px;
+}
 
-        width:300px;
-        height:200px;
+.love{
+    margin-top:12px;
+}
 
-    }
-
-    .paper{
-
-        width:250px;
-        height:180px;
-
-    }
-
-    .paper-content h1{
-
-        font-size:24px;
-
-    }
-
+.smile{
+    margin-top:-4px;
 }

@@ -1,0 +1,222 @@
+/* ==========================================================
+   liv-os
+   Welcome Screen v2
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f7f4ef;
+    color: #222;
+    overflow: hidden;
+}
+
+/* ===========================
+   LAYOUT
+=========================== */
+
+.welcome-screen {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px;
+}
+
+.content {
+
+    text-align: center;
+    max-width: 720px;
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+
+}
+
+/* ===========================
+   OPENING
+=========================== */
+
+.opening {
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: .95rem;
+
+    color: #888;
+
+    margin-bottom: 45px;
+
+    min-height: 22px;
+
+    letter-spacing: 1px;
+}
+
+/* ===========================
+   TITLE
+=========================== */
+
+.title {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 4rem;
+
+    font-weight: 600;
+
+    color: #222;
+
+    margin-bottom: 28px;
+
+    line-height: 1.15;
+}
+
+/* ===========================
+   SUBTITLE
+=========================== */
+
+.subtitle {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.7rem;
+
+    color: #666;
+
+    margin-bottom: 14px;
+}
+
+.description {
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 1.45rem;
+
+    color: #777;
+
+    margin-bottom: 70px;
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.continue-btn {
+
+    display: inline-block;
+
+    padding: 16px 38px;
+
+    border: 1px solid #222;
+
+    border-radius: 999px;
+
+    text-decoration: none;
+
+    color: #222;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: .95rem;
+
+    letter-spacing: .5px;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease;
+}
+
+.continue-btn:hover {
+
+    transform: translateY(-3px);
+
+    background: #fff;
+
+    box-shadow:
+        0 0 24px rgba(0,0,0,.08);
+}
+
+/* ===========================
+   VERSION
+=========================== */
+
+.version {
+
+    margin-top: 55px;
+
+    font-family: "JetBrains Mono", monospace;
+
+    font-size: .82rem;
+
+    color: #999;
+
+    letter-spacing: 2px;
+}
+
+/* ===========================
+   FADE
+=========================== */
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(15px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width:768px){
+
+    .title{
+
+        font-size:2.8rem;
+
+    }
+
+    .subtitle{
+
+        font-size:1.35rem;
+
+    }
+
+    .description{
+
+        font-size:1.2rem;
+
+    }
+
+    .continue-btn{
+
+        width:100%;
+
+    }
+
+}

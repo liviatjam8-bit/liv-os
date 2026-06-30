@@ -4,9 +4,16 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>liv-os</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
 
@@ -16,9 +23,29 @@
 
 <div class="terminal">
 
-<h1>liv-os v1.0.0</h1>
+<div class="boot-header">
 
-<p>Booting...</p>
+<div class="logo">
+
+liv-os
+
+</div>
+
+<div class="version">
+
+v1.0.0
+
+</div>
+
+</div>
+
+<div class="boot-status">
+
+<p class="boot-text">
+
+Booting...
+
+</p>
 
 <div class="progress-container">
 
@@ -26,15 +53,23 @@
 
 </div>
 
-<div id="logs"></div>
+</div>
 
-<div id="systemReady"></div>
+<div id="logs" class="logs">
 
-<button id="enterButton">
+</div>
 
-> Press ENTER
+<div id="systemReady" class="system-ready">
 
-</button>
+</div>
+
+<div id="enterButton" class="enter">
+
+<span>&gt; Press ENTER</span>
+
+<span class="cursor">▋</span>
+
+</div>
 
 </div>
 

@@ -6,43 +6,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Welcome | liv-os</title>
+    <title>Opening Letter | liv-os</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/welcome.css">
 
 </head>
 
 <body>
 
-    <!-- Transition Overlay -->
-    <div id="transition">
+    <main class="welcome-screen">
 
-        <div id="loadingText">
-            Opening letter...
+        <div class="content">
+
+            <p id="opening" class="opening"></p>
+
+            <h1 class="title">
+                Dear Ruben Sugianto,
+            </h1>
+
+            <p class="subtitle">
+                Before you go...
+            </p>
+
+            <p class="description">
+                Can you guess what's waiting inside? 👀
+            </p>
+
+            <a href="envelope.html" class="continue-btn">
+                Press Continue →
+            </a>
+
+            <div class="version">
+                liv-os v1.0.0
+            </div>
+
         </div>
-
-    </div>
-
-    <!-- Welcome -->
-    <main class="container">
-
-        <h1 id="title"></h1>
-
-        <p id="line1"></p>
-
-        <p id="line2"></p>
-
-        <a href="letter.html" id="continueBtn">
-            Press Continue when you're ready →
-        </a>
-
-        <footer>
-            liv-os v1.0.0
-        </footer>
 
     </main>
 
-    <script src="js/script.js"></script>
+    <script src="js/welcome.js"></script>
 
 </body>
 

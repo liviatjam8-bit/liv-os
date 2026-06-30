@@ -1,12 +1,12 @@
-/*
-=========================================
-liv-os
+/* =========================================================
+   liv-os
+   Boot Screen v2
+   Part 1
+========================================================= */
 
-Apple Inspired UI
-
-Created with love by Liv.
-=========================================
-*/
+/* ===========================
+   RESET
+=========================== */
 
 *{
     margin:0;
@@ -14,155 +14,311 @@ Created with love by Liv.
     box-sizing:border-box;
 }
 
+html,
 body{
 
-    background:#f7f7f5;
-
-    color:#1d1d1f;
-
-    font-family:-apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    sans-serif;
+    width:100%;
+    height:100%;
 
 }
 
-.container{
+/* ===========================
+   BODY
+=========================== */
 
-    width:90%;
+body.boot{
 
-    max-width:900px;
+    background:#F8F6F3;
 
-    min-height:100vh;
+    color:#1C1C1E;
 
-    margin:auto;
+    font-family:"JetBrains Mono", monospace;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+/* ===========================
+   TERMINAL
+=========================== */
+
+.terminal{
+
+    width:700px;
+
+    max-width:90%;
 
     display:flex;
 
     flex-direction:column;
 
-    justify-content:center;
-
-    align-items:center;
-
-    text-align:center;
+    align-items:flex-start;
 
 }
 
-h1{
+/* ===========================
+   HEADER
+=========================== */
 
-    font-size:58px;
+.boot-header{
+
+    margin-bottom:56px;
+
+}
+
+.logo{
+
+    font-size:34px;
 
     font-weight:600;
 
-    letter-spacing:-2px;
-
-    margin-bottom:40px;
+    letter-spacing:-1px;
 
 }
 
-p{
+.version{
 
-    font-size:28px;
+    margin-top:8px;
 
-    color:#555;
+    color:#8E8E93;
 
-    line-height:1.8;
-
-    margin:15px 0;
+    font-size:15px;
 
 }
 
-#continueBtn{
+/* ===========================
+   BOOT STATUS
+=========================== */
+
+.boot-status{
+
+    width:100%;
+
+}
+
+.boot-text{
+
+    font-size:16px;
+
+    margin-bottom:18px;
+
+}
+
+/* ===========================
+   PROGRESS
+=========================== */
+
+.progress-container{
+
+    width:100%;
+
+    height:8px;
+
+    background:#ECE9E5;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+.progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:#1C1C1E;
+
+    border-radius:999px;
+
+    transition:width .2s linear;
+
+}
+
+/* ===========================
+   LOGS
+=========================== */
+
+.logs{
+
+    margin-top:42px;
+
+    min-height:170px;
+
+    line-height:2;
+
+    font-size:15px;
+
+}
+
+.logs p{
+
+    opacity:0;
+
+    animation:fadeIn .45s forwards;
+
+}
+
+/* ===========================
+   SYSTEM READY
+=========================== */
+
+.system-ready{
+
+    margin-top:18px;
+
+    font-size:15px;
+
+    line-height:2;
+
+}
+/* =========================================================
+   liv-os
+   Boot Screen v2
+   Part 2
+========================================================= */
+
+/* ===========================
+   PRESS ENTER
+=========================== */
+
+.enter{
+
+    margin-top:28px;
+
+    font-size:16px;
 
     display:none;
 
-    margin-top:70px;
+    cursor:pointer;
 
-    color:#0071e3;
+    user-select:none;
 
-    text-decoration:none;
-
-    font-size:22px;
-
-    font-weight:500;
-
-    transition:.3s;
+    transition:.3s ease;
 
 }
 
-#continueBtn:hover{
+.enter:hover{
 
-    transform:translateX(6px);
-
-}
-
-footer{
-
-    position:fixed;
-
-    bottom:30px;
-
-    color:#999;
-
-    font-size:14px;
+    opacity:.65;
 
 }
+
+/* ===========================
+   CURSOR
+=========================== */
 
 .cursor{
 
-    border-right:2px solid #1d1d1f;
+    display:inline-block;
 
-    animation:blink .8s infinite;
+    margin-left:4px;
+
+    animation:blink .9s infinite;
 
 }
 
+/* ===========================
+   ANIMATIONS
+=========================== */
+
 @keyframes blink{
+
+    0%{
+
+        opacity:1;
+
+    }
 
     50%{
 
-        border-color:transparent;
+        opacity:0;
+
+    }
+
+    100%{
+
+        opacity:1;
 
     }
 
 }
 
-#transition{
+@keyframes fadeIn{
 
-    position:fixed;
+    from{
 
-    inset:0;
+        opacity:0;
 
-    background:#ffffff;
+        transform:translateY(6px);
 
-    display:flex;
+    }
 
-    justify-content:center;
+    to{
 
-    align-items:center;
+        opacity:1;
 
-    opacity:0;
+        transform:translateY(0);
 
-    visibility:hidden;
-
-    transition:.8s;
-
-    z-index:999;
+    }
 
 }
 
-#transition.show{
+/* ===========================
+   RESPONSIVE
+=========================== */
 
-    opacity:1;
+@media (max-width:768px){
 
-    visibility:visible;
+    .terminal{
 
-}
+        width:92%;
 
-#loadingText{
+    }
 
-    color:#777;
+    .logo{
 
-    font-size:24px;
+        font-size:28px;
+
+    }
+
+    .version{
+
+        font-size:14px;
+
+    }
+
+    .boot-text{
+
+        font-size:15px;
+
+    }
+
+    .logs{
+
+        font-size:14px;
+
+        min-height:160px;
+
+    }
+
+    .system-ready{
+
+        font-size:14px;
+
+    }
+
+    .enter{
+
+        font-size:15px;
+
+    }
 
 }
